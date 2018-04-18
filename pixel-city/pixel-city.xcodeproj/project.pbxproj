@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		505D50A2208713E90015E7BF /* DroppablePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D50A1208713E90015E7BF /* DroppablePin.swift */; };
+		505D50A42087185E0015E7BF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D50A32087185E0015E7BF /* Constants.swift */; };
 		50616F882086E95100EB64A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50616F872086E95100EB64A4 /* AppDelegate.swift */; };
 		50616F8A2086E95100EB64A4 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50616F892086E95100EB64A4 /* MapVC.swift */; };
 		50616F8D2086E95100EB64A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50616F8B2086E95100EB64A4 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		40875A8394C2E604118A3E24 /* Pods_pixel_city.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pixel_city.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		505D50A1208713E90015E7BF /* DroppablePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroppablePin.swift; sourceTree = "<group>"; };
+		505D50A32087185E0015E7BF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		50616F842086E95100EB64A4 /* pixel-city.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pixel-city.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50616F872086E95100EB64A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50616F892086E95100EB64A4 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		50616F9B2086E9FB00EB64A4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				505D50A32087185E0015E7BF /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				50616F8A2086E95100EB64A4 /* MapVC.swift in Sources */,
 				505D50A2208713E90015E7BF /* DroppablePin.swift in Sources */,
 				50616F882086E95100EB64A4 /* AppDelegate.swift in Sources */,
+				505D50A42087185E0015E7BF /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

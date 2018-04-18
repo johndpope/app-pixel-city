@@ -55,24 +55,36 @@ extension MapVC: MKMapViewDelegate {
 //        let coordinateRegion = MKCoordinateRegion(center: locationcoordinates, span: zoomSpan)
 
         guard let deviceCoordinate = locationManager.location?.coordinate else { return }
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(deviceCoordinate, regionRadious * 2.0, regionRadious * 2.0)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(deviceCoordinate, regionRadious * REGION_ZOOM, regionRadious * REGION_ZOOM)
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
     @objc func dropPin(sender: UITapGestureRecognizer) {
         // drop the pin on the map
-        print(">> dropPin()")
-        removeAllPins()
+         removeAllPins()
         
         let touchPoint = sender.location(in: mapView)
         let touchCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
         
-        let annotation = DroppablePin(coordinate: touchCoordinate, identifier: "droppablePin")
+        let annotation = DroppablePin(coordinate: touchCoordinate, identifier: PIN_IDENTIFIER)
         mapView.addAnnotation(annotation)
         
         // Set the annotation in the center of the map
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(touchCoordinate, regionRadious * 2.0, regionRadious * 2.0)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(touchCoordinate, regionRadious * REGION_ZOOM, regionRadious * REGION_ZOOM)
         mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        // Check if the annotation is the blue location of the user location.
+        // We don't want to change the user location
+        if annotation is MKUserLocation {
+            return nil
+        }
+        let pinAnnotation = MKPinAnnotationView(annotation: annotation, reuseIdentifier: PIN_IDENTIFIER)
+        pinAnnotation.pinTintColor = #colorLiteral(red: 0.9771530032, green: 0.7062081099, blue: 0.1748393774, alpha: 1)
+        pinAnnotation.animatesDrop = true
+        return pinAnnotation
     }
     
     func removeAllPins() {
