@@ -10,6 +10,8 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Alamofire
+import AlamofireImage
 
 class MapVC: UIViewController, UIGestureRecognizerDelegate {
 
@@ -30,6 +32,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     
     var flowLayout = UICollectionViewFlowLayout()
     var photoGalleryCollectionView: UICollectionView?
+    var photoUrlArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,11 +150,17 @@ extension MapVC: MKMapViewDelegate {
         let annotation = DroppablePin(coordinate: touchCoordinate, identifier: PIN_IDENTIFIER)
         mapView.addAnnotation(annotation)
         
-        //flickrUrl(withAnnotation: annotation, andNumberOfPhotos: 40)
-        
         // Set the annotation in the center of the map
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(touchCoordinate, regionRadious * REGION_ZOOM, regionRadious * REGION_ZOOM)
         mapView.setRegion(coordinateRegion, animated: true)
+        
+        //flickrUrl(withAnnotation: annotation, andNumberOfPhotos: 40)
+        retrieveUrls(forAnnotation: annotation) { (success) in
+            if success {
+                print(self.photoUrlArray)
+            }
+        }
+        
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -172,6 +181,34 @@ extension MapVC: MKMapViewDelegate {
             mapView.removeAnnotation(annotation)
         }
     }
+    
+    func retrieveUrls(forAnnotation annotation: DroppablePin, handler: @escaping (_ status: Bool) -> ()) {
+        // clear out the array to start
+        photoUrlArray = []
+        
+        Alamofire.request(flickrUrl(withAnnotation: annotation, andNumberOfPhotos: 40)).responseJSON { (response) in
+            if response.result.error == nil {
+                guard let jsonDict = response.result.value as? Dictionary<String, AnyObject> else { return }
+                let photosDict = jsonDict["photos"] as! Dictionary<String, AnyObject>
+                let photosDictArray = photosDict["photo"] as! [Dictionary<String, AnyObject>]
+                for photo in photosDictArray {
+                    let farm = photo["farm"]!
+                    let server = photo["server"]!
+                    let photoId = photo["id"]!
+                    let secret = photo["secret"]!
+                    
+                    let photoUrl = "https://farm\(farm).staticflickr.com/\(server)/\(photoId)_\(secret)_h_d.jpg"
+                    self.photoUrlArray.append(photoUrl)
+                }
+                handler(true)
+            } else {
+                debugPrint(response.result.error as Any)
+                handler(false)
+            }
+        }
+    }
+    
+    
 }
 
 extension MapVC: CLLocationManagerDelegate {
