@@ -14,11 +14,17 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
 
     // Outlets
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var photoGalleryView: UIView!
+    @IBOutlet weak var photoGalleryHeightConstraint: NSLayoutConstraint!
     
     // Variables
     var locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
     let regionRadious: Double = 1000                // meters
+    
+    var screenSize = UIScreen.main.bounds
+    var loadingPhotosSpinner: UIActivityIndicatorView?
+    var loadingPhotosProgressLbl: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +40,35 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         doubleTap.numberOfTapsRequired = 2
         doubleTap.delegate = self
         mapView.addGestureRecognizer(doubleTap)
+    }
+    
+    func addSwipe() {
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(MapVC.animatePhotoGalleryViewDown))
+        swipe.direction = .down
+        photoGalleryView.addGestureRecognizer(swipe)
+    }
+    
+    func animatePhotoGalleryViewUp() {
+        photoGalleryHeightConstraint.constant = 300                     // from 1 to 300
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func animatePhotoGalleryViewDown() {
+        photoGalleryHeightConstraint.constant = 1                     // from 300 to 1
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func addSpinner() {
+        loadingPhotosSpinner = UIActivityIndicatorView()
+        loadingPhotosSpinner?.center = CGPoint(x: (screenSize.width / 2) - ((loadingPhotosSpinner?.frame.width)! / 2), y: 150)
+        loadingPhotosSpinner?.activityIndicatorViewStyle = .whiteLarge
+        loadingPhotosSpinner?.color = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        loadingPhotosSpinner?.startAnimating()
+        photoGalleryView.addSubview(loadingPhotosSpinner!)
     }
 
 
@@ -62,6 +97,9 @@ extension MapVC: MKMapViewDelegate {
     @objc func dropPin(sender: UITapGestureRecognizer) {
         // drop the pin on the map
          removeAllPins()
+        animatePhotoGalleryViewUp()
+        addSwipe()
+        addSpinner()
         
         let touchPoint = sender.location(in: mapView)
         let touchCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
