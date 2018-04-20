@@ -28,11 +28,12 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     var screenSize = UIScreen.main.bounds
     var loadingPhotosSpinner: UIActivityIndicatorView?
     var loadingPhotosProgressLbl: UILabel?
-    let loadingPhotosProgressLblWidth:CGFloat = 200
+    let loadingPhotosProgressLblWidth:CGFloat = 250
     
     var flowLayout = UICollectionViewFlowLayout()
     var photoGalleryCollectionView: UICollectionView?
     var photoUrlArray = [String]()
+    var photoArray = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +73,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func animatePhotoGalleryViewDown() {
+        cancelAllSessions()
         photoGalleryHeightConstraint.constant = 1                     // from 300 to 1
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
@@ -98,10 +100,10 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         loadingPhotosProgressLbl = UILabel()
         loadingPhotosProgressLbl?.frame = CGRect(x: (screenSize.width / 2) - (loadingPhotosProgressLblWidth / 2),
                                                  y: 175, width: loadingPhotosProgressLblWidth, height: 40)
-        loadingPhotosProgressLbl?.font = UIFont(name: "Avenir Next", size: 18)
+        loadingPhotosProgressLbl?.font = UIFont(name: "Avenir Next", size: 14)
         loadingPhotosProgressLbl?.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         loadingPhotosProgressLbl?.textAlignment = .center
-        loadingPhotosProgressLbl?.text = "12/40 photos loaded..."
+        //loadingPhotosProgressLbl?.text = "12/40 photos loaded..."
         photoGalleryCollectionView?.addSubview(loadingPhotosProgressLbl!)
     }
     func removeProgressLabel() {
@@ -138,6 +140,7 @@ extension MapVC: MKMapViewDelegate {
         removeAllPins()
         removeSpinner()
         removeProgressLabel()
+        cancelAllSessions()
         
         animatePhotoGalleryViewUp()
         addSwipe()
@@ -158,6 +161,13 @@ extension MapVC: MKMapViewDelegate {
         retrieveUrls(forAnnotation: annotation) { (success) in
             if success {
                 print(self.photoUrlArray)
+                self.retrievePhotos(handler: { (success) in
+                    if success {
+                        // hide spinner, lable, reload the photo collection view
+                        self.removeSpinner()
+                        self.removeProgressLabel()
+                    }
+                })
             }
         }
         
@@ -186,7 +196,8 @@ extension MapVC: MKMapViewDelegate {
         // clear out the array to start
         photoUrlArray = []
         
-        Alamofire.request(flickrUrl(withAnnotation: annotation, andNumberOfPhotos: 40)).responseJSON { (response) in
+         self.loadingPhotosProgressLbl?.text = "Starting to download photos..."
+        Alamofire.request(flickrUrl(withAnnotation: annotation)).responseJSON { (response) in
             if response.result.error == nil {
                 guard let jsonDict = response.result.value as? Dictionary<String, AnyObject> else { return }
                 let photosDict = jsonDict["photos"] as! Dictionary<String, AnyObject>
@@ -208,6 +219,34 @@ extension MapVC: MKMapViewDelegate {
         }
     }
     
+    func retrievePhotos(handler: @escaping (_ status: Bool) -> ()) {
+        // Retrieve each photo from Flickr and store them into the photo array
+        
+        photoArray = []
+        for photoUrl in photoUrlArray {
+            Alamofire.request(photoUrl).responseImage { (response) in
+               if response.result.error == nil {
+                    guard let image = response.result.value else { return }
+                    self.photoArray.append(image)
+
+                    self.loadingPhotosProgressLbl?.text = "\(self.photoArray.count)/\(FLICKR_API_NUMBER_OF_PHOTOS) photos downloaded..."
+                    if self.photoArray.count == self.photoUrlArray.count {
+                        handler(true)
+                    }
+               }
+            }
+        }
+    }
+    
+    func cancelAllSessions() {
+        Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { (sessionDataTask, uploadData, downloadData) in
+            // cancel all the session data tasks
+            sessionDataTask.forEach({ $0.cancel() })
+            
+            // cancel all the download data tasks
+            downloadData.forEach({ $0.cancel() })
+        }
+    }
     
 }
 
