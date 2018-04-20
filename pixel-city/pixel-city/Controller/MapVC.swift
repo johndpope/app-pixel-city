@@ -25,6 +25,10 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     var screenSize = UIScreen.main.bounds
     var loadingPhotosSpinner: UIActivityIndicatorView?
     var loadingPhotosProgressLbl: UILabel?
+    let loadingPhotosProgressLblWidth:CGFloat = 200
+    
+    var flowLayout = UICollectionViewFlowLayout()
+    var photoGalleryCollectionView: UICollectionView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +37,14 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
 
         configureLocationServices()
         addDoubleTap()
+        
+        // Photo gallery
+        photoGalleryCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
+        photoGalleryCollectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: "photoCell")
+        photoGalleryCollectionView?.delegate = self
+        photoGalleryCollectionView?.dataSource = self
+        photoGalleryCollectionView?.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        photoGalleryView.addSubview(photoGalleryCollectionView!)
      }
     
     func addDoubleTap() {
@@ -68,7 +80,30 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         loadingPhotosSpinner?.activityIndicatorViewStyle = .whiteLarge
         loadingPhotosSpinner?.color = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         loadingPhotosSpinner?.startAnimating()
-        photoGalleryView.addSubview(loadingPhotosSpinner!)
+        photoGalleryCollectionView?.addSubview(loadingPhotosSpinner!)
+    }
+    
+    func removeSpinner() {
+        // First check if there is a spinner to be removed
+        if loadingPhotosSpinner != nil {
+            loadingPhotosSpinner?.removeFromSuperview()
+        }
+    }
+    
+    func addProgressLabel() {
+        loadingPhotosProgressLbl = UILabel()
+        loadingPhotosProgressLbl?.frame = CGRect(x: (screenSize.width / 2) - (loadingPhotosProgressLblWidth / 2),
+                                                 y: 175, width: loadingPhotosProgressLblWidth, height: 40)
+        loadingPhotosProgressLbl?.font = UIFont(name: "Avenir Next", size: 18)
+        loadingPhotosProgressLbl?.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        loadingPhotosProgressLbl?.textAlignment = .center
+        loadingPhotosProgressLbl?.text = "12/40 photos loaded..."
+        photoGalleryCollectionView?.addSubview(loadingPhotosProgressLbl!)
+    }
+    func removeProgressLabel() {
+        if loadingPhotosProgressLbl != nil {
+            loadingPhotosProgressLbl?.removeFromSuperview()
+        }
     }
 
 
@@ -96,10 +131,14 @@ extension MapVC: MKMapViewDelegate {
     
     @objc func dropPin(sender: UITapGestureRecognizer) {
         // drop the pin on the map
-         removeAllPins()
+        removeAllPins()
+        removeSpinner()
+        removeProgressLabel()
+        
         animatePhotoGalleryViewUp()
         addSwipe()
         addSpinner()
+        addProgressLabel()
         
         let touchPoint = sender.location(in: mapView)
         let touchCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
@@ -143,5 +182,23 @@ extension MapVC: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         centerMapInUserLocation()
+    }
+}
+
+extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell {
+            return cell
+        } else {
+            return UICollectionViewCell()
+        }
+    }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // array count
+        return 4
     }
 }
