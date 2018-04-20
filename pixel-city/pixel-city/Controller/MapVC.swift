@@ -6,6 +6,7 @@
 //  Copyright © 2018 David Brunstein. All rights reserved.
 //
 
+
 import UIKit
 import MapKit
 import CoreLocation
@@ -145,6 +146,8 @@ extension MapVC: MKMapViewDelegate {
         
         let annotation = DroppablePin(coordinate: touchCoordinate, identifier: PIN_IDENTIFIER)
         mapView.addAnnotation(annotation)
+        
+        //flickrUrl(withAnnotation: annotation, andNumberOfPhotos: 40)
         
         // Set the annotation in the center of the map
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(touchCoordinate, regionRadious * REGION_ZOOM, regionRadious * REGION_ZOOM)
