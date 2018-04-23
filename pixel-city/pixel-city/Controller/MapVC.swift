@@ -50,6 +50,10 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         photoGalleryCollectionView?.dataSource = self
         photoGalleryCollectionView?.backgroundColor = #colorLiteral(red: 0.9771530032, green: 0.7062081099, blue: 0.1748393774, alpha: 1)
         photoGalleryView.addSubview(photoGalleryCollectionView!)
+        
+        // Registering the photo gallery collection view to tell where to take the rectangle from
+        registerForPreviewing(with: self, sourceView: photoGalleryCollectionView!)
+        
      }
     
     func addDoubleTap() {
@@ -298,5 +302,27 @@ extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource {
         present(popVC, animated: true, completion: nil)
         
         
+    }
+}
+
+extension MapVC: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        // Setup PopVC when the user push all the way down to pop the photo
+        // We give an idea where the user is pressing to have an idea where to animate from
+        
+        guard let indexPath = photoGalleryCollectionView?.indexPathForItem(at: location), let cell = photoGalleryCollectionView?.cellForItem(at: indexPath) else { return nil }
+        
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopVC else { return nil }
+        popVC.initData(forImage: self.photoArray[indexPath.row])
+        
+        previewingContext.sourceRect = cell.contentView.frame
+        return popVC
+        
+        
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        // Setup the peak part, when the user push a little bit to take a peak of the photo
+        show(viewControllerToCommit, sender: self)
     }
 }
