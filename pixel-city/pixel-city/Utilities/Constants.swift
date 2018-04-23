@@ -22,7 +22,7 @@ let FLICKR_API_METHOD: String = "flickr.photos.search"
 let FLICKR_API_RADIOUS: String = "1"
 let FLICKR_API_RADIOUS_UNITS: String = "km"
 let FLICKR_API_FORMAT: String = "json"
-let FLICKR_API_NUMBER_OF_PHOTOS: String = "20"
+let FLICKR_API_NUMBER_OF_PHOTOS: String = "40"
 
 func flickrUrl(withAnnotation annotation: DroppablePin) -> String {
     

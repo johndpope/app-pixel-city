@@ -48,7 +48,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         photoGalleryCollectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: "photoCell")
         photoGalleryCollectionView?.delegate = self
         photoGalleryCollectionView?.dataSource = self
-        photoGalleryCollectionView?.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        photoGalleryCollectionView?.backgroundColor = #colorLiteral(red: 0.9771530032, green: 0.7062081099, blue: 0.1748393774, alpha: 1)
         photoGalleryView.addSubview(photoGalleryCollectionView!)
      }
     
@@ -142,6 +142,11 @@ extension MapVC: MKMapViewDelegate {
         removeProgressLabel()
         cancelAllSessions()
         
+        photoUrlArray = []
+        photoArray = []
+        photoGalleryCollectionView?.reloadData()
+        
+        
         animatePhotoGalleryViewUp()
         addSwipe()
         addSpinner()
@@ -166,6 +171,7 @@ extension MapVC: MKMapViewDelegate {
                         // hide spinner, lable, reload the photo collection view
                         self.removeSpinner()
                         self.removeProgressLabel()
+                        self.photoGalleryCollectionView?.reloadData()
                     }
                 })
             }
@@ -193,10 +199,7 @@ extension MapVC: MKMapViewDelegate {
     }
     
     func retrieveUrls(forAnnotation annotation: DroppablePin, handler: @escaping (_ status: Bool) -> ()) {
-        // clear out the array to start
-        photoUrlArray = []
-        
-         self.loadingPhotosProgressLbl?.text = "Starting to download photos..."
+        self.loadingPhotosProgressLbl?.text = "Starting to download photos..."
         Alamofire.request(flickrUrl(withAnnotation: annotation)).responseJSON { (response) in
             if response.result.error == nil {
                 guard let jsonDict = response.result.value as? Dictionary<String, AnyObject> else { return }
@@ -221,8 +224,6 @@ extension MapVC: MKMapViewDelegate {
     
     func retrievePhotos(handler: @escaping (_ status: Bool) -> ()) {
         // Retrieve each photo from Flickr and store them into the photo array
-        
-        photoArray = []
         for photoUrl in photoUrlArray {
             Alamofire.request(photoUrl).responseImage { (response) in
                if response.result.error == nil {
@@ -268,6 +269,9 @@ extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell {
+            
+            let photoImageView = UIImageView(image: self.photoArray[indexPath.row])
+            cell.addSubview(photoImageView)
             return cell
         } else {
             return UICollectionViewCell()
@@ -277,7 +281,22 @@ extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource {
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // array count
-        return 4
+        // photo array count
+        return photoArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // This function is called when one of the cells is tapped
+        
+        // 1. Instantiate PopVC from storyboard
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopVC else { return }
+        
+        // 2. pass the selected image to PopVC
+        popVC.initData(forImage: self.photoArray[indexPath.row])
+        
+        // 3. present the view controller
+        present(popVC, animated: true, completion: nil)
+        
+        
     }
 }
