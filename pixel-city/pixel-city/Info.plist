@@ -18,8 +18,28 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>6582f2f3ba714c4b361092b3f4f9a059b25bac64</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app requires your location to pull photos from Flickr.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app requires your location to pull photos from Flickr.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app requires your location to pull photos from Flickr.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -39,11 +59,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app requires your location to pull photos from Flickr.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app requires your location to pull photos from Flickr.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app requires your location to pull photos from Flickr.</string>
 </dict>
 </plist>

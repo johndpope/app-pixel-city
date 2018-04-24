@@ -9,4 +9,7 @@ target 'pixel-city' do
   pod 'Alamofire', '~> 4.7'
   pod 'AlamofireImage', '~> 3.3'
 
+  pod 'Fabric'
+  pod 'Crashlytics'
+
 end
