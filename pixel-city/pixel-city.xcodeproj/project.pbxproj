@@ -12,7 +12,6 @@
 		17EC7D1621820D89001C958E /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EC7D1021820D89001C958E /* VideoCollectionViewCell.swift */; };
 		17EC7D1721820D89001C958E /* PopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EC7D1121820D89001C958E /* PopVC.swift */; };
 		17EC7D1821820D89001C958E /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EC7D1221820D89001C958E /* MapVC.swift */; };
-		17EC7D1921820D89001C958E /* NetworkLandingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EC7D1321820D89001C958E /* NetworkLandingVC.swift */; };
 		17EC7D1B21820EB7001C958E /* VisualManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EC7D1A21820EB7001C958E /* VisualManager.swift */; };
 		17EC7D2021820F8E001C958E /* LandingVC+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EC7D1E21820F8D001C958E /* LandingVC+UITableView.swift */; };
 		17EC7D2121820F8E001C958E /* LandingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EC7D1F21820F8E001C958E /* LandingVC.swift */; };
@@ -28,6 +27,7 @@
 		17EC7D3A2182194C001C958E /* UIWindow+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EC7D392182194C001C958E /* UIWindow+Category.swift */; };
 		17EC7D3C21821B15001C958E /* MyTabBar+UITabBarControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EC7D3B21821B15001C958E /* MyTabBar+UITabBarControllerDelegate.swift */; };
 		17EC7D3E21821B77001C958E /* AppearanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EC7D3D21821B76001C958E /* AppearanceService.swift */; };
+		17EC7D42218228DA001C958E /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EC7D41218228D9001C958E /* HeaderSectionView.swift */; };
 		505D50A2208713E90015E7BF /* DroppablePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D50A1208713E90015E7BF /* DroppablePin.swift */; };
 		505D50A42087185E0015E7BF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D50A32087185E0015E7BF /* Constants.swift */; };
 		50616F882086E95100EB64A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50616F872086E95100EB64A4 /* AppDelegate.swift */; };
@@ -44,7 +44,6 @@
 		17EC7D1021820D89001C958E /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		17EC7D1121820D89001C958E /* PopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopVC.swift; sourceTree = "<group>"; };
 		17EC7D1221820D89001C958E /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
-		17EC7D1321820D89001C958E /* NetworkLandingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkLandingVC.swift; sourceTree = "<group>"; };
 		17EC7D1A21820EB7001C958E /* VisualManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualManager.swift; sourceTree = "<group>"; };
 		17EC7D1E21820F8D001C958E /* LandingVC+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LandingVC+UITableView.swift"; sourceTree = "<group>"; };
 		17EC7D1F21820F8E001C958E /* LandingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingVC.swift; sourceTree = "<group>"; };
@@ -60,6 +59,7 @@
 		17EC7D392182194C001C958E /* UIWindow+Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Category.swift"; sourceTree = "<group>"; };
 		17EC7D3B21821B15001C958E /* MyTabBar+UITabBarControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MyTabBar+UITabBarControllerDelegate.swift"; sourceTree = "<group>"; };
 		17EC7D3D21821B76001C958E /* AppearanceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceService.swift; sourceTree = "<group>"; };
+		17EC7D41218228D9001C958E /* HeaderSectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
 		40875A8394C2E604118A3E24 /* Pods_pixel_city.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pixel_city.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		505D50A1208713E90015E7BF /* DroppablePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroppablePin.swift; sourceTree = "<group>"; };
 		505D50A32087185E0015E7BF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -93,7 +93,6 @@
 				17EC7D1121820D89001C958E /* PopVC.swift */,
 				17EC7D3121821316001C958E /* DebugView.swift */,
 				17EC7D1221820D89001C958E /* MapVC.swift */,
-				17EC7D1321820D89001C958E /* NetworkLandingVC.swift */,
 				17EC7D1F21820F8E001C958E /* LandingVC.swift */,
 				17EC7D1E21820F8D001C958E /* LandingVC+UITableView.swift */,
 				17EC7D1A21820EB7001C958E /* VisualManager.swift */,
@@ -106,6 +105,7 @@
 		17EC7D0D21820D89001C958E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				17EC7D41218228D9001C958E /* HeaderSectionView.swift */,
 				17EC7D0E21820D89001C958E /* VideoCollectionViewCell+Snapkit.swift */,
 				17EC7D0F21820D89001C958E /* NetworkLandingCell.swift */,
 				17EC7D1021820D89001C958E /* VideoCollectionViewCell.swift */,
@@ -165,8 +165,8 @@
 		50616F862086E95100EB64A4 /* pixel-city */ = {
 			isa = PBXGroup;
 			children = (
-				17EC7D252182100D001C958E /* DataModelNetwork */,
 				17EC7D2221820FC3001C958E /* Extensions */,
+				17EC7D252182100D001C958E /* DataModelNetwork */,
 				17EC7D0C21820D89001C958E /* Controller */,
 				50616F9B2086E9FB00EB64A4 /* Utilities */,
 				50616F9A2086E9F300EB64A4 /* View */,
@@ -370,7 +370,6 @@
 				17EC7D1521820D89001C958E /* NetworkLandingCell.swift in Sources */,
 				50616F882086E95100EB64A4 /* AppDelegate.swift in Sources */,
 				17EC7D3E21821B77001C958E /* AppearanceService.swift in Sources */,
-				17EC7D1921820D89001C958E /* NetworkLandingVC.swift in Sources */,
 				17EC7D3021821253001C958E /* MyTabBar.swift in Sources */,
 				17EC7D1421820D89001C958E /* VideoCollectionViewCell+Snapkit.swift in Sources */,
 				17EC7D1721820D89001C958E /* PopVC.swift in Sources */,
@@ -388,6 +387,7 @@
 				17EC7D38218218C1001C958E /* Placeholder.swift in Sources */,
 				17EC7D2D218210CA001C958E /* CustomURLCache.swift in Sources */,
 				17EC7D34218214FD001C958E /* Models.swift in Sources */,
+				17EC7D42218228DA001C958E /* HeaderSectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

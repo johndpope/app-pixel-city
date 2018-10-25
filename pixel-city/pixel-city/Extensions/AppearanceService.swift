@@ -79,6 +79,16 @@ final class AppearanceService {
     }
     
     func setGlobalAppearance() {
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.statusBarBackgroundColor = .black
+        
+        //iPhoneX large navigation titles
+        UINavigationBar.appearance().prefersLargeTitles = true
+        UINavigationBar.appearance().largeTitleTextAttributes =
+            [NSAttributedStringKey.foregroundColor: UIColor.white,
+             NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.medium)]
+        
         // NavigationBar
         let navAppearance = UINavigationBar.appearance()
         navAppearance.tintColor = navBar.tintColor

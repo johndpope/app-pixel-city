@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Fabric.with([Crashlytics.self])
         
+        DM.populateData()
         buildWindow()
         configureAppearanceService()
         return true
@@ -26,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DM.weakWindow = window
         
         let mainTBC = UITabBarController()
+        MyTabBar.shared.weakMainTBC = mainTBC
         mainTBC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mainTBC.viewControllers = MyTabBar.buildNavigationControllers()
         mainTBC.delegate = MyTabBar.shared

@@ -97,13 +97,13 @@ class VideoCollectionViewCell: CollectionViewCell {
         dateLabel.numberOfLines = 1
         dateLabel.textAlignment = .left
 
-        pulseAnimation = .none
+
     }
 
     func configureCollectionViewCell(video: Photo) {
 
         videoLabel.text = video.title
-        dateLabel.text = video.eventDate
+//        dateLabel.text = video.eventDate
 
         durationLabel.isHidden = false
         alphaDurationView.isHidden = false

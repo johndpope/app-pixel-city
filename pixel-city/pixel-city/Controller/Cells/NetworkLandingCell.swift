@@ -86,12 +86,10 @@ class NetworkLandingCell: TableViewCell, UICollectionViewDelegate, UICollectionV
     }
 
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if itemsList.count > 0 {
-
-//            let video: Photo? = itemsList[indexPath.row]
-
-
-        }
+       print("didSelectItemAt")
+        let vc = UIViewController()
+        vc.title = "🦒 Detail Page"
+        DM.weakLandingNC?.pushViewController(vc, animated: true)
     }
 
     // MARK: - UICollectionViewDelegate
@@ -105,19 +103,19 @@ class NetworkLandingCell: TableViewCell, UICollectionViewDelegate, UICollectionV
         return 10
     }
 
-    func configureTableViewCell(videos: [Photo]) {
+    func configureTableViewCell(photos: [Photo]) {
 
         cellLayout.itemSize = VM.networkCellSize
-        itemsList = videos
+        itemsList = photos
         setNeedsLayout()
         networkCV?.reloadData()
     }
 
-    func configureTableViewCellWithVideos(channel:Channel,videos: [Photo]) {
+    func configureTableViewCellWithPhotos(channel:Channel,photos: [Photo]) {
         
         cellLayout.itemSize = VM.networkCellSize
         item = channel
-        itemsList = videos
+        itemsList = photos
         setNeedsLayout()
         networkCV?.reloadData()
         

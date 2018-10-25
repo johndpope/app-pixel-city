@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 // for debugging player expanding sections
-let 🤡 = false
+let 🤡 = true
 
 
 
@@ -71,7 +71,7 @@ class DebugView: NSObject {
 
     class func emptyTableHeaderView() -> UIView {
         if 🤡 == true {
-            let rect = CGRect(x: 0, y: 0, width: 300, height: myTableView.tableHeaderHeight.rawValue)
+            let rect = CGRect(x: 0, y: 0, width: screenWidth, height: myTableView.tableHeaderHeight.rawValue)
             let view = UIView(frame: rect)
             view.backgroundColor = .red
             let label = UILabel(frame: rect)

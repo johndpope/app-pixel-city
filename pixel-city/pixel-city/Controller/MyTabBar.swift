@@ -6,8 +6,9 @@ class MyNavigationController: UINavigationController {
 }
 
 public enum tabBarTag: Int {
-    case featured = 0
-    case network = 1
+    case landing = 0
+    case blank = 1
+    case map = 2
 
 }
 
@@ -22,26 +23,28 @@ class MyTabBar: NSObject {
     //
     class func buildNavigationControllers() -> [UIViewController] {
 
-        // Featured
+        // Landing Page / Navigation Controller
         let landingVC = LandingVC()
-        let feedsNC = buildNavigationController(vc:landingVC)
-        feedsNC.tabBarItem = tabBarItem(title: "Splash", imageName: "PhotoIcon", selectedImageName: "PhotoIcon", tagIndex: tabBarTag.featured.rawValue)
-
+        let landingNC = buildNavigationController(vc:landingVC)
+        DM.weakLandingNC = landingNC
+        landingNC.tabBarItem = tabBarItem(title: "Splash", imageName: "PhotoIcon", selectedImageName: "PhotoIcon", tagIndex: tabBarTag.landing.rawValue)
+        
    
         // 2nd Tab
         let blankVC = UIViewController()
+        blankVC.title = "Blank"
         let blankNC = buildNavigationController(vc:blankVC)
-        blankNC.tabBarItem = tabBarItem(title: "Apple", imageName: "AppleIcon", selectedImageName: "AppleIcon", tagIndex: tabBarTag.network.rawValue)
+        blankNC.tabBarItem = tabBarItem(title: "Apple", imageName: "AppleIcon", selectedImageName: "AppleIcon", tagIndex: tabBarTag.blank.rawValue)
 
         
         // Mapper
         let mapVC = UIStoryboard.mainStoryboard().instantiateViewController(withIdentifier: "MapViewControllerId")
         mapVC.title = "Map"
         let mapNC = buildNavigationController(vc:mapVC)
-        mapNC.tabBarItem = tabBarItem(title: "Map", imageName: "GlobeIcon", selectedImageName: "GlobeIcon", tagIndex: tabBarTag.network.rawValue)
+        mapNC.tabBarItem = tabBarItem(title: "Map", imageName: "GlobeIcon", selectedImageName: "GlobeIcon", tagIndex: tabBarTag.map.rawValue)
 
 
-        return  [feedsNC,blankNC,mapNC]
+        return  [landingNC,blankNC,mapNC]
     }
 
     class func tabBarItem(title: String, imageName: String, selectedImageName: String, tagIndex: Int) -> UITabBarItem {
@@ -63,10 +66,24 @@ class MyTabBar: NSObject {
     }
   
     
-
-
-
-    
+    // why does this exist? the titles / navigation item titles differ - this fixes things
+    class func resyncTabBarTitles() {
+        if let vcs = MyTabBar.shared.weakMainTBC?.viewControllers {
+            for (index, vc) in vcs.enumerated() {
+                if index == tabBarTag.landing.rawValue {
+                    vc.tabBarItem.title = "landing"
+                }
+                if index == tabBarTag.blank.rawValue {
+                    vc.tabBarItem.title = "blank"
+                }
+                if index == tabBarTag.map.rawValue {
+                    vc.tabBarItem.title = "map"
+                }
+                
+                
+            }
+        }
+    }
 
     
   
