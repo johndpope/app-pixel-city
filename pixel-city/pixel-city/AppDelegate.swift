@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DM.populateData()
         buildWindow()
         configureAppearanceService()
+       
         return true
     }
 

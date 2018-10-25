@@ -34,8 +34,9 @@ extension UIColor {
     // Reds
     static let pinkishRed = UIColor.rgb(r: 235, g: 24, b: 38)
     static let mexicanRed = UIColor.rgb(r: 163, g: 20, b: 33)
-    static let fireEngineRed = UIColor.rgb(r: 215, g: 24, b: 42)
+    static let fireEngineRed = UIColor.rgb(r: 215, g: 24, b: 42) 
     static let fireEngineRedDisabled = UIColor.rgba(r: 215, g: 24, b: 42, a: 0.3)
+    static let governorBay =  UIColor(red:0.29, green:0.31, blue:0.57, alpha:1.00)
     
     // Others
     static let featuredSelectedIconColor = UIColor.rgb(r: 145, g: 115, b: 94)

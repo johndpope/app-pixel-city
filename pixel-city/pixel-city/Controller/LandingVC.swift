@@ -13,6 +13,7 @@ class LandingVC: UIViewController, UITableViewDelegate,UITableViewDataSource {
         return tb
     }()
 
+    var featuredTableHeader = FeaturedTableViewHeader()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,7 +29,11 @@ class LandingVC: UIViewController, UITableViewDelegate,UITableViewDataSource {
         
         
         // Header image
-        myTableView.tableHeaderView = DebugView.emptyTableHeaderView()
+        myTableView.tableHeaderView = featuredTableHeader
+        
+        // demo header
+        let photo = Photo(id: 1, title: "Good night Gorilla", photoDescription: "bla bla", thumbURL: "https://www.underthemoonlightsg.com/uploads/1/0/8/8/108893287/s498573774969902924_p179_i2_w685.jpeg")
+        featuredTableHeader.configureHeader(photo: photo)
         
         myTableView.dataSource = self
         myTableView.delegate = self
@@ -36,6 +41,8 @@ class LandingVC: UIViewController, UITableViewDelegate,UITableViewDataSource {
         configureConstraints()
     }
 
+
+  
     
      // Snapkit layouts
     func configureConstraints(){
@@ -47,6 +54,8 @@ class LandingVC: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // call this to allow emoji in this title - but not in navigation items
+         MyTabBar.resyncTabBarTitles()
     }
 
 
