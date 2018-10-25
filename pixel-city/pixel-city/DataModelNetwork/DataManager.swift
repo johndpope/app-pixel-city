@@ -19,6 +19,7 @@ class DataManager {
     var networkChannels: [Channel] = []
     
     
+    var flikrChannels: [FlikrChannel] = []
 
     func populateData(){
         

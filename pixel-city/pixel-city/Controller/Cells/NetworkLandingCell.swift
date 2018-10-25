@@ -20,8 +20,8 @@ class NetworkLandingCell: TableViewCell, UICollectionViewDelegate, UICollectionV
 
 
     var paginationIndex: Int = 0
-    var itemsList: [MyPhoto] = []
-    var item: Channel?
+    var itemsList: [Photo] = []
+    var item: FlikrChannel?
 
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -78,9 +78,9 @@ class NetworkLandingCell: TableViewCell, UICollectionViewDelegate, UICollectionV
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCollectionViewCell.ID, for: indexPath) as! VideoCollectionViewCell
 
         if itemsList.count > 0 {
-            let video = itemsList[indexPath.row]
+            let photo = itemsList[indexPath.row]
 
-            cell.configureCollectionViewCell(video: video)
+            cell.configureCollectionViewCell(photo: photo)
         }
         return cell
     }
@@ -103,15 +103,18 @@ class NetworkLandingCell: TableViewCell, UICollectionViewDelegate, UICollectionV
         return 10
     }
 
-    func configureTableViewCell(photos: [MyPhoto]) {
-
+    func configureTableViewCell(photos: [Photo]) {
+        
         cellLayout.itemSize = VM.networkCellSize
         itemsList = photos
         setNeedsLayout()
         networkCV?.reloadData()
     }
 
-    func configureTableViewCellWithPhotos(channel:Channel,photos: [MyPhoto]) {
+
+
+    
+    func configureTableViewCellWithPhotos(channel:FlikrChannel,photos: [Photo]) {
         
         cellLayout.itemSize = VM.networkCellSize
         item = channel

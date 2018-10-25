@@ -7,7 +7,7 @@ extension LandingVC {
   
     // MARK: UITableview datasource / Delegate
     func numberOfSections(in _: UITableView) -> Int {
-        return DM.networkChannels.count
+        return DM.flikrChannels.count
     }
     
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -17,7 +17,7 @@ extension LandingVC {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: NetworkLandingCell.ID) as? NetworkLandingCell {
-            let channel = DM.networkChannels[indexPath.section]
+            let channel = DM.flikrChannels[indexPath.section]
             cell.configureTableViewCellWithPhotos(channel: channel,photos:channel.photos)
             return cell
         }
@@ -39,7 +39,7 @@ extension LandingVC {
 
     func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let sectionTitle = "\(DM.networkChannels[section].name)"
+        let sectionTitle = "\(DM.flikrChannels[section].name)"
         let headerSection = HeaderSection(sectionName: "\(sectionTitle)", sectionTitleHeight: 60)
         return headerSection
     }

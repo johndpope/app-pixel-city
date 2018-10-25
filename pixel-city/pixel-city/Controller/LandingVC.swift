@@ -14,6 +14,7 @@ class LandingVC: UIViewController, UITableViewDelegate,UITableViewDataSource {
     }()
 
     var featuredTableHeader = FeaturedTableViewHeader()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,10 +40,17 @@ class LandingVC: UIViewController, UITableViewDelegate,UITableViewDataSource {
         myTableView.delegate = self
         reloadTableView()
         configureConstraints()
+        addListeners()
     }
 
 
+    func addListeners(){
+        NotificationCenter.default.addObserver(self, selector: #selector(dataLoaded),  name: kFlikrLoaded, object: nil)
+    }
   
+    @objc func dataLoaded(){
+        myTableView.reloadData()
+    }
     
      // Snapkit layouts
     func configureConstraints(){

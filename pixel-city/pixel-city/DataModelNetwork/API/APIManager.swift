@@ -39,16 +39,39 @@ class APIManager {
     }
 
     
+    // Why this? - this is crafting 3 different calls to get variety of results to mash together into landing page
+    // It's possible to eagerly fetch this content before any views appear - so we use lose coupling to broadcast when data comes in
+    // optimisations could include reducing number of images to fetch
     func fetchLandingContent(){
-        searchFlickrForTerm("gorilla") { (photos, error)  in
-            print("photos:",photos)
+        
+        
+        let gorillaTitle = "gorilla"
+        searchFlickrForTerm(gorillaTitle) { (photos, error)  in
+
+            let channel = FlikrChannel(name: gorillaTitle, photos: photos)
+            DM.flikrChannels.append(channel)
+            Notificator.fireNotification(kFlikrLoaded)
         }
-        searchFlickrForTerm("giraffe") { (photos, error)  in
-             print("photos:",photos)
+ 
+       
+        let giraffeTitle = "giraffe"
+        searchFlickrForTerm(giraffeTitle) { (photos, error)  in
+  
+            let channel = FlikrChannel(name: giraffeTitle, photos: photos)
+            DM.flikrChannels.append(channel)
+            Notificator.fireNotification(kFlikrLoaded)
+           
         }
-        searchFlickrForTerm("armadillo") { (photos, error)  in
-            print("photos:",photos)
+        
+        
+        let armadilloTitle = "armadillo"
+        searchFlickrForTerm(armadilloTitle) { (photos, error)  in
+            let channel = FlikrChannel(name: armadilloTitle, photos: photos)
+            DM.flikrChannels.append(channel)
+            Notificator.fireNotification(kFlikrLoaded)
         }
+        
+        
         
     }
     

@@ -99,6 +99,24 @@ class VideoCollectionViewCell: CollectionViewCell {
 
 
     }
+    
+    func configureCollectionViewCell(photo: Photo) {
+        
+        videoLabel.text = photo.title
+        //        dateLabel.text = video.eventDate
+        
+        durationLabel.isHidden = false
+        alphaDurationView.isHidden = false
+        heroImageView.image = kPlaceholderImage
+        heroImageView.loadImageUsingCacheWithUrlString(urlString: photo.url.absoluteString, noFadeIn:false)
+
+        if iPad{
+            configureTabletConstraints()
+        }else{
+            configureConstraints()
+        }
+    }
+    
 
     func configureCollectionViewCell(video: MyPhoto) {
 

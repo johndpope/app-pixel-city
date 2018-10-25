@@ -14,6 +14,13 @@ public struct Channel {
     
 }
 
+public struct FlikrChannel {
+    var name:String
+    var photos:[Photo]
+    
+}
+
+
 public struct MyPhoto:Decodable{
 
     var id: Int
