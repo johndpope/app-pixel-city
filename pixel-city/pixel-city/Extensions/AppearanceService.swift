@@ -26,7 +26,7 @@ protocol NavigationBarAppearanceProtocol: AppearanceProtocol {}
 extension NavigationBarAppearanceProtocol {
     var tintColor: UIColor { return .white }
     var unselectedTintColor: UIColor? { return .yellow }
-    var barTintColor: UIColor? { return UIColor.rgba(r: 0, g: 0, b: 0, a: 0.85) }
+    var barTintColor: UIColor? { return UIColor.clear }
     var isTranslucent: Bool { return false }
 }
 
@@ -37,8 +37,8 @@ protocol TabBarAppearanceProtocol: AppearanceProtocol {}
 extension TabBarAppearanceProtocol {
     var tintColor: UIColor { return .white }
     var unselectedTintColor: UIColor? { return UIColor(white: 1, alpha: 0.7) }
-    var barTintColor: UIColor? { return .black }
-    var isTranslucent: Bool { return false }
+    var barTintColor: UIColor? { return .yellow }
+    var isTranslucent: Bool { return true }
 }
 
 struct TabBarAppearance: TabBarAppearanceProtocol {}
@@ -121,7 +121,7 @@ final class AppearanceService {
 
         // UITabBar
         let tabBarAppearance = UITabBar.appearance()
-        tabBarAppearance.barTintColor = .black
+        tabBarAppearance.barTintColor = .clear
         tabBarAppearance.tintColor = .governorBay
         tabBarAppearance.isTranslucent = tabBar.isTranslucent
         

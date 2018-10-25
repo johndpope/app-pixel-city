@@ -32,7 +32,7 @@ class LandingVC: UIViewController, UITableViewDelegate,UITableViewDataSource {
         myTableView.tableHeaderView = featuredTableHeader
         
         // demo header
-        let photo = Photo(id: 1, title: "Good night Gorilla", photoDescription: "bla bla", thumbURL: "https://www.underthemoonlightsg.com/uploads/1/0/8/8/108893287/s498573774969902924_p179_i2_w685.jpeg")
+        let photo = MyPhoto(id: 1, title: "Good night Gorilla", photoDescription: "bla bla", thumbURL: "https://www.underthemoonlightsg.com/uploads/1/0/8/8/108893287/s498573774969902924_p179_i2_w685.jpeg")
         featuredTableHeader.configureHeader(photo: photo)
         
         myTableView.dataSource = self

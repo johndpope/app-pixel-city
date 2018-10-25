@@ -1,8 +1,6 @@
 import UIKit
 import Alamofire
 import CocoaLumberjack
-import UnboxedAlamofire
-import Unbox
 import Device
 
 let VM = VisualManager.shared

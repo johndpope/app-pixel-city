@@ -56,7 +56,7 @@ class FeaturedTableViewHeader: UIView {
         }
 
     }
-    func configureHeader(photo: Photo) {
+    func configureHeader(photo: MyPhoto) {
         
         videoLabel.text = photo.title
  

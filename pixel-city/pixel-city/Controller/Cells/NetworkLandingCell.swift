@@ -20,7 +20,7 @@ class NetworkLandingCell: TableViewCell, UICollectionViewDelegate, UICollectionV
 
 
     var paginationIndex: Int = 0
-    var itemsList: [Photo] = []
+    var itemsList: [MyPhoto] = []
     var item: Channel?
 
     override func prepareForReuse() {
@@ -103,7 +103,7 @@ class NetworkLandingCell: TableViewCell, UICollectionViewDelegate, UICollectionV
         return 10
     }
 
-    func configureTableViewCell(photos: [Photo]) {
+    func configureTableViewCell(photos: [MyPhoto]) {
 
         cellLayout.itemSize = VM.networkCellSize
         itemsList = photos
@@ -111,7 +111,7 @@ class NetworkLandingCell: TableViewCell, UICollectionViewDelegate, UICollectionV
         networkCV?.reloadData()
     }
 
-    func configureTableViewCellWithPhotos(channel:Channel,photos: [Photo]) {
+    func configureTableViewCellWithPhotos(channel:Channel,photos: [MyPhoto]) {
         
         cellLayout.itemSize = VM.networkCellSize
         item = channel

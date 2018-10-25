@@ -109,9 +109,9 @@
 			children = (
 				17EC7D4321822FFF001C958E /* FeaturedTableViewHeader.swift */,
 				17EC7D41218228D9001C958E /* HeaderSectionView.swift */,
-				17EC7D0E21820D89001C958E /* VideoCollectionViewCell+Snapkit.swift */,
 				17EC7D0F21820D89001C958E /* NetworkLandingCell.swift */,
 				17EC7D1021820D89001C958E /* VideoCollectionViewCell.swift */,
+				17EC7D0E21820D89001C958E /* VideoCollectionViewCell+Snapkit.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -168,16 +168,16 @@
 		50616F862086E95100EB64A4 /* pixel-city */ = {
 			isa = PBXGroup;
 			children = (
-				17EC7D2221820FC3001C958E /* Extensions */,
-				17EC7D252182100D001C958E /* DataModelNetwork */,
+				50616F872086E95100EB64A4 /* AppDelegate.swift */,
+				50616F8E2086E95500EB64A4 /* Assets.xcassets */,
 				17EC7D0C21820D89001C958E /* Controller */,
+				17EC7D252182100D001C958E /* DataModelNetwork */,
+				17EC7D2221820FC3001C958E /* Extensions */,
+				50616F932086E95500EB64A4 /* Info.plist */,
+				50616F902086E95500EB64A4 /* LaunchScreen.storyboard */,
+				50616F8B2086E95100EB64A4 /* Main.storyboard */,
 				50616F9B2086E9FB00EB64A4 /* Utilities */,
 				50616F9A2086E9F300EB64A4 /* View */,
-				50616F872086E95100EB64A4 /* AppDelegate.swift */,
-				50616F8B2086E95100EB64A4 /* Main.storyboard */,
-				50616F8E2086E95500EB64A4 /* Assets.xcassets */,
-				50616F902086E95500EB64A4 /* LaunchScreen.storyboard */,
-				50616F932086E95500EB64A4 /* Info.plist */,
 			);
 			path = "pixel-city";
 			sourceTree = "<group>";
@@ -309,6 +309,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/CodableAlamofire/CodableAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Device/Device.framework",
 				"${BUILT_PRODUCTS_DIR}/LumberjackConsole/LumberjackConsole.framework",
 				"${BUILT_PRODUCTS_DIR}/Material/Material.framework",
@@ -316,8 +317,6 @@
 				"${BUILT_PRODUCTS_DIR}/NBUCore/NBUCore.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Unbox/Unbox.framework",
-				"${BUILT_PRODUCTS_DIR}/UnboxedAlamofire/UnboxedAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -325,6 +324,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Device.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LumberjackConsole.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
@@ -332,8 +332,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NBUCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Unbox.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnboxedAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

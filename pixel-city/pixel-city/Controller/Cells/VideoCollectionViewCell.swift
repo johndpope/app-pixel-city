@@ -100,7 +100,7 @@ class VideoCollectionViewCell: CollectionViewCell {
 
     }
 
-    func configureCollectionViewCell(video: Photo) {
+    func configureCollectionViewCell(video: MyPhoto) {
 
         videoLabel.text = video.title
 //        dateLabel.text = video.eventDate

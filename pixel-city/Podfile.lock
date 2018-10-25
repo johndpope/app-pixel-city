@@ -8,6 +8,8 @@ PODS:
   - CocoaLumberjack/Default (3.4.2)
   - CocoaLumberjack/Extensions (3.4.2):
     - CocoaLumberjack/Default
+  - CodableAlamofire (1.1.0):
+    - Alamofire (~> 4.0)
   - Crashlytics (3.10.1):
     - Fabric (~> 1.7.5)
   - Device (3.0.3)
@@ -27,16 +29,13 @@ PODS:
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
   - SnapKit (4.0.0)
-  - Unbox (2.5.0)
-  - UnboxedAlamofire (2.0.4):
-    - Alamofire (~> 4.1)
-    - Unbox (~> 2.0)
   - XLPagerTabStrip (8.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AlamofireImage (~> 3.3)
   - CocoaLumberjack
+  - CodableAlamofire
   - Crashlytics
   - Device (~> 3.0.0)
   - Fabric
@@ -44,8 +43,6 @@ DEPENDENCIES:
   - Material
   - SDWebImage
   - SnapKit (~> 4.0.0)
-  - Unbox
-  - UnboxedAlamofire
   - XLPagerTabStrip
 
 SPEC REPOS:
@@ -53,6 +50,7 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - CocoaLumberjack
+    - CodableAlamofire
     - Crashlytics
     - Device
     - Fabric
@@ -62,14 +60,13 @@ SPEC REPOS:
     - NBUCore
     - SDWebImage
     - SnapKit
-    - Unbox
-    - UnboxedAlamofire
     - XLPagerTabStrip
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
   CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
+  CodableAlamofire: e2d2edcec7cf413f7862c30c8fa98eded27a83f9
   Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
   Device: 9a5264ee4e0f392e7153d2c46b10c8df46b7aad2
   Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
@@ -79,10 +76,8 @@ SPEC CHECKSUMS:
   NBUCore: 201af50441f48513ef6d5823a5fc12c9e1f288cd
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  Unbox: 30e437e6151a6de16139375fd4e8dd9a664cfbf7
-  UnboxedAlamofire: e803f471553e3aecec711f5d50f80cda6c65feaa
   XLPagerTabStrip: c908b17cbf42fcd2598ee1adfc49bae25444d88a
 
-PODFILE CHECKSUM: fa322ffa08c35efcfa2acf31b6e5a06e80081726
+PODFILE CHECKSUM: a6557a6c1d883e6e532210a7b13c99d6e5c7adfa
 
 COCOAPODS: 1.5.3
