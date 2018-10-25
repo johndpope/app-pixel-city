@@ -2,29 +2,87 @@ PODS:
   - Alamofire (4.7.2)
   - AlamofireImage (3.3.1):
     - Alamofire (~> 4.5)
+  - CocoaLumberjack (3.4.2):
+    - CocoaLumberjack/Default (= 3.4.2)
+    - CocoaLumberjack/Extensions (= 3.4.2)
+  - CocoaLumberjack/Default (3.4.2)
+  - CocoaLumberjack/Extensions (3.4.2):
+    - CocoaLumberjack/Default
   - Crashlytics (3.10.1):
     - Fabric (~> 1.7.5)
+  - Device (3.0.3)
   - Fabric (1.7.6)
+  - LumberjackConsole (3.3.0):
+    - CocoaLumberjack (>= 3.x)
+    - NBUCore (>= 2.1.0)
+  - Material (2.16.4):
+    - Material/Core (= 2.16.4)
+  - Material/Core (2.16.4):
+    - Motion (~> 1.4.3)
+  - Motion (1.4.3):
+    - Motion/Core (= 1.4.3)
+  - Motion/Core (1.4.3)
+  - NBUCore (2.1.0)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
+  - SnapKit (4.0.0)
+  - Unbox (2.5.0)
+  - UnboxedAlamofire (2.0.4):
+    - Alamofire (~> 4.1)
+    - Unbox (~> 2.0)
+  - XLPagerTabStrip (8.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AlamofireImage (~> 3.3)
+  - CocoaLumberjack
   - Crashlytics
+  - Device (~> 3.0.0)
   - Fabric
+  - LumberjackConsole
+  - Material
+  - SDWebImage
+  - SnapKit (~> 4.0.0)
+  - Unbox
+  - UnboxedAlamofire
+  - XLPagerTabStrip
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
+    - CocoaLumberjack
     - Crashlytics
+    - Device
     - Fabric
+    - LumberjackConsole
+    - Material
+    - Motion
+    - NBUCore
+    - SDWebImage
+    - SnapKit
+    - Unbox
+    - UnboxedAlamofire
+    - XLPagerTabStrip
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
+  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
   Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
+  Device: 9a5264ee4e0f392e7153d2c46b10c8df46b7aad2
   Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
+  LumberjackConsole: 1837f5266a9b7052aebc6d6d8c9daa8bdc01b75d
+  Material: 4ed78690b09ffd148b5ffab6b4367fb1d8da1cd3
+  Motion: 153ba49692997888556c7a95207278a8b1f8be95
+  NBUCore: 201af50441f48513ef6d5823a5fc12c9e1f288cd
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  Unbox: 30e437e6151a6de16139375fd4e8dd9a664cfbf7
+  UnboxedAlamofire: e803f471553e3aecec711f5d50f80cda6c65feaa
+  XLPagerTabStrip: c908b17cbf42fcd2598ee1adfc49bae25444d88a
 
-PODFILE CHECKSUM: 3b6377c27bf4a35032ed1c5aa84757a38b008e78
+PODFILE CHECKSUM: fa322ffa08c35efcfa2acf31b6e5a06e80081726
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

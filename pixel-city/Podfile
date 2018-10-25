@@ -12,4 +12,18 @@ target 'pixel-city' do
   pod 'Fabric'
   pod 'Crashlytics'
 
+  # iPad mini / iPhoneX detection
+  pod 'Device', '~> 3.0.0'
+
+  #most widely-used auto-layout engine for ios
+  pod 'SnapKit', '~> 4.0.0' 
+  pod 'Material'
+  pod 'CocoaLumberjack'
+  pod 'XLPagerTabStrip'
+  pod 'Unbox'
+  pod 'UnboxedAlamofire'
+  pod 'SDWebImage'
+  pod 'CocoaLumberjack'
+  pod 'LumberjackConsole'
+
 end

@@ -1,12 +1,8 @@
-//
-//  Constants.swift
-//  pixel-city
-//
-//  Created by David Brunstein on 2018-04-18.
-//  Copyright © 2018 David Brunstein. All rights reserved.
-//
 
 import Foundation
+import UIKit
+
+let kPlaceholderImage = UIImage(named: "placeholder")
 
 
 // Map and Annotations
@@ -37,3 +33,21 @@ func flickrUrl(withAnnotation annotation: DroppablePin) -> String {
 }
 
 
+var screenWidth = UIScreen.main.bounds.width
+var screenHeight = UIScreen.main.bounds.height
+
+//All views which constraints are based on device's width/height needs to refer to this
+struct currentSize {
+    static var height : CGFloat = screenHeight
+    static var width : CGFloat = screenWidth
+    
+    static func updateCurrentSize(size: CGSize) {
+        currentSize.height = size.height
+        currentSize.width = size.width
+        
+    }
+    
+    static func getCurrentSize() -> CGSize {
+        return CGSize(width: currentSize.width, height: currentSize.height)
+    }
+}
