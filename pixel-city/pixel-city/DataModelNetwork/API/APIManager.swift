@@ -39,13 +39,13 @@ class APIManager {
     }
 
     
-    // Why this? - this is crafting 3 different calls to get variety of results to mash together into landing page
+    // Why this? - this is crafting multiple API calls to get variety of results to mash together into landing page
     // It's possible to eagerly fetch this content before any views appear - so we use lose coupling to broadcast when data comes in
     // optimisations could include reducing number of images to fetch
     func fetchLandingContent(){
         
         
-        let gorillaTitle = "gorilla"
+        let gorillaTitle = "Gorilla"
         searchFlickrForTerm(gorillaTitle) { (photos, error)  in
 
             let channel = FlikrChannel(name: gorillaTitle, photos: photos)
@@ -54,7 +54,7 @@ class APIManager {
         }
  
        
-        let giraffeTitle = "giraffe"
+        let giraffeTitle = "Giraffe"
         searchFlickrForTerm(giraffeTitle) { (photos, error)  in
   
             let channel = FlikrChannel(name: giraffeTitle, photos: photos)
@@ -64,13 +64,27 @@ class APIManager {
         }
         
         
-        let armadilloTitle = "armadillo"
+        let armadilloTitle = "Armadillo"
         searchFlickrForTerm(armadilloTitle) { (photos, error)  in
             let channel = FlikrChannel(name: armadilloTitle, photos: photos)
             DM.flikrChannels.append(channel)
             Notificator.fireNotification(kFlikrLoaded)
         }
         
+        
+        let lionTitle = "Lion"
+        searchFlickrForTerm(lionTitle) { (photos, error)  in
+            let channel = FlikrChannel(name: lionTitle, photos: photos)
+            DM.flikrChannels.append(channel)
+            Notificator.fireNotification(kFlikrLoaded)
+        }
+        
+        let elephantTitle = "Elephant"
+        searchFlickrForTerm(elephantTitle) { (photos, error)  in
+            let channel = FlikrChannel(name: elephantTitle, photos: photos)
+            DM.flikrChannels.append(channel)
+            Notificator.fireNotification(kFlikrLoaded)
+        }
         
         
     }
